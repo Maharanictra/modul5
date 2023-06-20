@@ -8,10 +8,35 @@
     @vite('resources/sass/app.scss')
 </head>
 <body>
+<<<<<<< HEAD
     
     @extends('layouts.app')
 
 @section('content')
+=======
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container">
+            <a href="{{ route('home') }}" class="navbar-brand mb-0 h1"><i class="bi-hexagon-fill me-2"></i> Data Master</a>
+
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <hr class="d-lg-none text-white-50">
+
+                <ul class="navbar-nav flex-row flex-wrap">
+                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
+                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('employees.index') }}" class="nav-link active">Employee List</a></li>
+                </ul>
+
+                <hr class="d-lg-none text-white-50">
+
+                <a href="{{ route('profile') }}" class="btn btn-outline-light my-2 ms-md-auto"><i class="bi-person-circle me-1"></i> My Profile</a>
+            </div>
+        </div>
+    </nav>
+>>>>>>> c077a2eb8661201b277847327c30e049811ae97d
 
     <div class="container mt-4">
         <div class="row mb-0">
@@ -34,7 +59,11 @@
                         <th>Email</th>
                         <th>Age</th>
                         <th>Position</th>
+<<<<<<< HEAD
                         <th>Action</th>
+=======
+                        <th></th>
+>>>>>>> c077a2eb8661201b277847327c30e049811ae97d
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +73,7 @@
                             <td>{{ $employee->lastname }}</td>
                             <td>{{ $employee->email }}</td>
                             <td>{{ $employee->age }}</td>
+<<<<<<< HEAD
                             <td>{{ $employee->position->name }}</td>
                             <td>
                         </tr>
@@ -64,3 +94,31 @@
 @endsection
 
 </tbody>
+=======
+                            <td>{{ $employee->position_name }}</td>
+                            <td>
+                                <div class="d-flex">
+                                    <a href="{{ route('employees.show', ['employee' => $employee->employee_id]) }}" class="btn btn-outline-dark btn-sm me-2"><i class="bi-person-lines-fill"></i></a>
+                                    <a href="{{ route('employees.edit', ['employee' => $employee->employee_id]) }}" class="btn btn-outline-dark btn-sm me-2"><i class="bi-pencil-square"></i></a>
+
+                                    <div>
+                                        <form action="{{ route('employees.destroy', ['employee' => $employee->employee_id]) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-outline-dark btn-sm me-2"><i class="bi-trash"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @vite('resources/js/app.js')
+</body>
+</html>
+
+>>>>>>> c077a2eb8661201b277847327c30e049811ae97d

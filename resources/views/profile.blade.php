@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> c077a2eb8661201b277847327c30e049811ae97d
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +12,16 @@
     @vite('resources/sass/app.scss')
 </head>
 <body>
+<<<<<<< HEAD
     @extends('layouts.app')
 
 @section('content')
         @include('default')
 @endsection
     {{-- <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+=======
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+>>>>>>> c077a2eb8661201b277847327c30e049811ae97d
         <div class="container">
             <a href="{{ route('home') }}" class="navbar-brand mb-0 h1"><i class="bi-hexagon-fill me-2"></i> Data Master</a>
 
@@ -34,7 +42,11 @@
                 <a href="{{ route('profile') }}" class="btn btn-outline-light my-2 ms-md-auto"><i class="bi-person-circle me-1"></i> My Profile</a>
             </div>
         </div>
+<<<<<<< HEAD
     </nav> --}}
+=======
+    </nav>
+>>>>>>> c077a2eb8661201b277847327c30e049811ae97d
 
     <div class="container mt-4">
         <h4>{{ $pageTitle }}</h4>
@@ -48,3 +60,7 @@
     @vite('resources/js/app.js')
 </body>
 </html>
+<<<<<<< HEAD
+=======
+
+>>>>>>> c077a2eb8661201b277847327c30e049811ae97d
