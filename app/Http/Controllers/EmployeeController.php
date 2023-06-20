@@ -5,11 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-<<<<<<< HEAD
 use App\Models\Employee;
 use App\Models\Position;
-=======
->>>>>>> c077a2eb8661201b277847327c30e049811ae97d
 
 class EmployeeController extends Controller
 {
@@ -21,24 +18,8 @@ class EmployeeController extends Controller
 
         $pageTitle = 'Employee List';
 
-<<<<<<< HEAD
-        // // RAW SQL QUERY
-        // $employees = DB::select('
-        //     select *, employees.id as employee_id, positions.name as position_name
-        //     from employees
-        //     left join positions on employees.position_id = positions.id
-        // ');
-
         // ELOQUENT
         $employees = Employee::all();
-=======
-        // RAW SQL QUERY
-        $employees = DB::select('
-            select *, employees.id as employee_id, positions.name as position_name
-            from employees
-            left join positions on employees.position_id = positions.id
-        ');
->>>>>>> c077a2eb8661201b277847327c30e049811ae97d
 
         return view('employee.index', [
             'pageTitle' => $pageTitle,
@@ -54,16 +35,8 @@ class EmployeeController extends Controller
     {
         $pageTitle = 'Create Employee';
 
-<<<<<<< HEAD
-        // // RAW SQL Query
-        // $positions = DB::select('select * from positions');
-
-        //ELOQUENT
-        $positions = Position::all();
-=======
         // RAW SQL Query
         $positions = DB::select('select * from positions');
->>>>>>> c077a2eb8661201b277847327c30e049811ae97d
 
         return view('employee.create', compact('pageTitle', 'positions'));
     }
@@ -90,25 +63,6 @@ class EmployeeController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-<<<<<<< HEAD
-    //     // INSERT QUERY
-    //     DB::table('employees')->insert([
-    //     'firstname' => $request->firstName,
-    //     'lastname' => $request->lastName,
-    //     'email' => $request->email,
-    //     'age' => $request->age,
-    //     'position_id' => $request->position,
-    // ]);
-
-    // ELOQUENT
-    $employee = New Employee;
-    $employee->firstname = $request->firstName;
-    $employee->lastname = $request->lastName;
-    $employee->email = $request->email;
-    $employee->age = $request->age;
-    $employee->position_id = $request->position;
-    $employee->save();
-=======
         // INSERT QUERY
         DB::table('employees')->insert([
         'firstname' => $request->firstName,
@@ -117,7 +71,6 @@ class EmployeeController extends Controller
         'age' => $request->age,
         'position_id' => $request->position,
     ]);
->>>>>>> c077a2eb8661201b277847327c30e049811ae97d
 
     return redirect()->route('employees.index');
     }
@@ -134,26 +87,13 @@ class EmployeeController extends Controller
         //     select *, employees.id as employee_id, positions.name as position_name
         //     from employees left join positions on employees.position_id = positions.id where employees.id = ?', [$id]))->first();
 
-<<<<<<< HEAD
-        // // QUERY BUILDER
-        // $employee = DB::table('employees')
-        //     ->select('employees.*', 'employees.id as employee_id', 'positions.name as position_name')
-        //     ->leftjoin('positions', 'employees.position_id', '=', 'positions.id' )
-        //     ->where('employees.id', $id)
-        //     ->first();
-
-        // ELOQUENT
-        $employee = Employee::find($id);
-
-=======
         // QUERY BUILDER
         $employee = DB::table('employees')
             ->select('employees.*', 'employees.id as employee_id', 'positions.name as position_name')
             ->leftjoin('positions', 'employees.position_id', '=', 'positions.id' )
             ->where('employees.id', $id)
             ->first();
-            
->>>>>>> c077a2eb8661201b277847327c30e049811ae97d
+
         return view('employee.show', compact('pageTitle', 'employee'));
     }
 
@@ -168,19 +108,6 @@ class EmployeeController extends Controller
         // $employee = employee::find($id)
         // $positions = DB::table('positions')->get()
 
-<<<<<<< HEAD
-        // $employee = DB::table('employees')
-        //     ->select('employees.*', 'employees.id as employee_id', 'positions.name as position_name')
-        //     ->leftjoin('positions', 'employees.position_id', '=', 'positions.id' )
-        //     ->where('employees.id', $id)
-        //     ->first();
-
-        // $positions = DB::table('positions')->get();
-
-        // ELOQUENT
-        $positions = Position;;all();
-        $employee = Employee::find($id);
-=======
         $employee = DB::table('employees')
             ->select('employees.*', 'employees.id as employee_id', 'positions.name as position_name')
             ->leftjoin('positions', 'employees.position_id', '=', 'positions.id' )
@@ -188,7 +115,6 @@ class EmployeeController extends Controller
             ->first();
 
         $positions = DB::table('positions')->get();
->>>>>>> c077a2eb8661201b277847327c30e049811ae97d
 
         return view('employee.edit', compact('pageTitle', 'employee', 'positions'));
     }
@@ -215,25 +141,6 @@ class EmployeeController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
-<<<<<<< HEAD
-        // DB::table('employees')
-        //     ->where('id', $id)->update([
-        //     'firstname' => $request->firstName,
-        //     'lastname' => $request->lastName,
-        //     'email' => $request->email,
-        //     'age' => $request->age,
-        //     'position_id' => $request->position,
-        // ]);
-
-          // ELOQUENT
-          $employee = Employee::find($id);
-          $employee->firstname = $request->firtsName;
-          $employee->lastname = $request->lastName;
-          $employee->email = $request->email;
-          $employee->age = $request->age;
-          $employee->position_id = $request->position;
-          $employee->save();
-=======
         DB::table('employees')
             ->where('id', $id)->update([
             'firstname' => $request->firstName,
@@ -242,7 +149,6 @@ class EmployeeController extends Controller
             'age' => $request->age,
             'position_id' => $request->position,
         ]);
->>>>>>> c077a2eb8661201b277847327c30e049811ae97d
 
         return redirect()->route('employees.index');
     }
@@ -252,22 +158,11 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
-<<<<<<< HEAD
-        // //QUERY BUILDER
-        // DB::table('employees')
-        //     ->where('id', $id)
-        //     ->delete();
-
-        //ELOQUENT
-        Employee;;find($id)->delete();
-        
-=======
         //QUERY BUILDER
         DB::table('employees')
             ->where('id', $id)
             ->delete();
 
->>>>>>> c077a2eb8661201b277847327c30e049811ae97d
         return redirect()->route('employees.index');
     }
 }
